@@ -22,12 +22,9 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     private ProgressDialog mProgressDialog;
     private Context context;
     private PowerManager.WakeLock mWakeLock;
-    private File sdCardStorage;
     private String filePath;
     public DownloadTask(Context context) {
         this.context = context;
-        sdCardStorage= Environment.getExternalStorageDirectory();
-        filePath=sdCardStorage.getPath()+"/file.zip";
     }
 
     @Override
@@ -54,8 +51,8 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
             // download the file
 
             input = connection.getInputStream();
-            output = new FileOutputStream(filePath);
-
+            output = new FileOutputStream(sUrl[1]);
+            filePath=sUrl[1];
             byte data[] = new byte[4096];
             long total = 0;
             int count;

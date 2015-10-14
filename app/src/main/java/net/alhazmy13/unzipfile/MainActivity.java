@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Please enter a valid URL",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                new DownloadTask(MainActivity.this).execute(fileUrlEditText.getText().toString());
+                //first Parameter  = URL ex: http://domain.net/file.zip
+                //Second Parameter = Path target ex: /storege/sdcard/0/file.zip
+                new DownloadTask(MainActivity.this).execute(fileUrlEditText.getText().toString(),sdCardStorage.getPath()+"/file.zip");
             }
         });
         unzipButton.setOnClickListener(new View.OnClickListener() {
